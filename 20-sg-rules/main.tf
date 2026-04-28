@@ -48,7 +48,17 @@ resource "aws_security_group_rule" "redis_bastion" {
   to_port           = 22
   protocol          = "tcp"
   # where traffic is coming from
-  source_security_group_id = local.user_sg_id
+  source_security_group_id = local.bastion_sg_id
   # destination sg id where we want to add this rule
+  security_group_id = local.redis_sg_id
+}
+
+resource "aws_security_group_rule" "redis_user" {
+  type              = "ingress"
+  from_port         = 6379
+  to_port           = 6379
+  protocol          = "tcp"
+  # Where traffic is coming from
+  source_security_group_id = local.user_sg_id
   security_group_id = local.redis_sg_id
 }
