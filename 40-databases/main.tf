@@ -26,7 +26,7 @@ resource "terraform_data" "bootstramp" {
   }
   
   provisioner "file" {
-    source = "bootstap.sh" # local file which we want to copy on remote machine
+    source = "bootstrap.sh" # local file which we want to copy on remote machine
     destination = "/tmp/bootstrap.sh" # destination path on remote machine
   }
   provisioner "remote-exec" {
