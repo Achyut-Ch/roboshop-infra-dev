@@ -41,3 +41,14 @@ resource "aws_security_group_rule" "mongodb_user" {
   # destination sg id where we want to add this rule
   security_group_id = local.mongodb_sg_id
 }
+
+resource "aws_security_group_rule" "redis_bastion" {
+  type              = "ingress"
+  from_port         = 27017
+  to_port           = 27017
+  protocol          = "tcp"
+  # where traffic is coming from
+  source_security_group_id = local.user_sg_id
+  # destination sg id where we want to add this rule
+  security_group_id = local.redis_sg_id
+}
