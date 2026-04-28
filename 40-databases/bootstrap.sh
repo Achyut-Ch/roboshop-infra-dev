@@ -1,3 +1,3 @@
 #!/bin/bash
 
-sudo dnf install ansible -y
+dnf install ansible -y
