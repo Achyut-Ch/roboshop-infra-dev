@@ -7,7 +7,7 @@ resource "aws_instance" "mongodb" {
   
   tags = merge(
     {
-        Name = "${var.project}${var.environment}-mongodb"
+        Name = "${var.project}-${var.environment}-mongodb"
     },
     local.common_tags
   )
@@ -32,7 +32,7 @@ resource "terraform_data" "bootstrap" {
   provisioner "remote-exec" {
     inline = [
       "chmod +x /tmp/bootstrap.sh",
-      "sudo /tmp/bootstrap.sh mongodb"
+      "sudo sh /tmp/bootstrap.sh mongodb"
     ]
   }
 }
@@ -49,7 +49,7 @@ resource "aws_instance" "redis" {
   
   tags = merge(
     {
-        Name = "${var.project}${var.environment}-redis"
+        Name = "${var.project}-${var.environment}-redis"
     },
     local.common_tags
   )
