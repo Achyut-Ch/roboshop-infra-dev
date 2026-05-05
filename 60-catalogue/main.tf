@@ -4,6 +4,9 @@ resource "aws_instance" "catalogue" {
   # in which subnet we want to launch this instance, we can use subnet id 
   subnet_id = local.private_subnet_ids
   vpc_security_group_ids = [local.catalogue_sg_id]
+    lifecycle {
+    prevent_destroy = true
+  }
   
   tags = merge(
     {
