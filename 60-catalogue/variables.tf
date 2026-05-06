@@ -14,3 +14,7 @@ variable "zone_id" {
 variable "domain_name" {
     default = "daws88.sbs"
 }
+
+variable "app_version" {
+    default = "v3"
+}
